@@ -1,0 +1,61 @@
+.BuildControl {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.BuildControl:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.BuildControl__Label {
+  display: inline-block;
+  width: 20%;
+  color: white;
+  font-weight: 400;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+.ButtonGroup {
+  margin-left: auto;
+}
+
+.BuildControl__Button {
+  display: inline-block;
+  width: auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  box-sizing: border-box;
+}
+.BuildControl__Button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.BuildControl__ButtonLess {
+  background: #2b2b2b;
+}
+.BuildControl__ButtonLess:disabled {
+  background: rgb(184, 130, 92);
+}
+.BuildControl__ButtonLess:hover:not(:disabled) {
+  background: #131313;
+}
+
+.BuildControl__ButtonMore {
+  background: #e48f34;
+}
+.BuildControl__ButtonMore:hover {
+  background: #d37c1e;
+}
+
+@media screen and (min-width: 500px) {
+  .BuildControl {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+  }
+}

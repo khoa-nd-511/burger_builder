@@ -1,0 +1,41 @@
+.BuildControls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #5e5e5e;
+  padding: 1rem 3rem;
+}
+
+.OrderAndPrice {
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.OrderButton {
+  background: #f08e4a;
+  border: none;
+  border-radius: 4px;
+  padding: 1rem;
+  color: #fff;
+}
+
+.OrderButton:disabled {
+  background: rgb(184, 130, 92);
+}
+
+.PriceBar {
+  color: white;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 500px) {
+  .OrderAndPrice {
+    width: 60%;
+    margin: auto;
+  }  
+}

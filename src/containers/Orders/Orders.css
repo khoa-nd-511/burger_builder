@@ -1,0 +1,9 @@
+.GroupedOrders {
+  display: flex;
+  width: 65%;
+  align-items: center;
+  margin: auto;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

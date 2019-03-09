@@ -1,0 +1,25 @@
+.AuthForm {
+  width: 60%;
+  margin: auto;
+  margin-top: 8rem;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.08), 0px 5px 50px 0px rgba(0,0,0,0.08);
+  padding: 52px 47px 63px;
+}
+
+.AuthForm p {
+  color: red;
+}
+
+@media (min-width: 500px) {
+  .AuthForm {
+    width: 40%;
+    margin-top: 10rem;
+  }
+}
+
+.Logo {
+  display: flex;
+  height: 80px;
+  justify-content: space-around;
+}

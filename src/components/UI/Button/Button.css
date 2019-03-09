@@ -1,0 +1,29 @@
+.Button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.Button:hover {
+  font-size: 1.4rem;
+}
+
+.Button:disabled {
+  background: #ccc !important;
+  cursor: not-allowed;
+}
+
+.Button:disabled:hover {
+  font-size: 1.3rem;
+}
+
+.Danger {
+  color: red;
+}
+
+.Success {
+  color: green;
+}
