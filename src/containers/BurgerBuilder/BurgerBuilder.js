@@ -11,7 +11,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
   state = {
     purchasing: false,
     loading: false
@@ -21,8 +21,8 @@ class BurgerBuilder extends Component {
     if (this.props.isAuthenticated) {
       this.setState({ purchasing: true });
     } else {
-      this.props.onSetAuthRedirectPath('/checkout')
-      this.props.history.push('/auth', { notAuth: true })
+      this.props.onSetAuthRedirectPath("/checkout");
+      this.props.history.push("/auth", { notAuth: true });
     }
   };
 
@@ -35,19 +35,25 @@ class BurgerBuilder extends Component {
     this.props.history.push("/checkout");
   };
 
-  componentDidMount() {
-    this.props.onInitIngredients();
-  }
-
-  render() {
+  mapIngredients = () => {
     const disabledInfo = {
       ...this.props.ings
     };
     for (const key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
-    const showOrderButton =
-      disabledInfo["cheese"] === false && disabledInfo["meat"] === false;
+
+    return {
+      disabledInfo,
+      shouldDisableOrderBtn: disabledInfo["cheese"] === true && disabledInfo["meat"] === true
+    }
+  }
+
+  componentDidMount() {
+    this.props.onInitIngredients();
+  }
+
+  render() {
 
     let orderSummary = null;
 
@@ -61,7 +67,8 @@ class BurgerBuilder extends Component {
       ) : (
         <Spinner />
       );
-    if (this.props.ings) {
+
+    if (this.props.ings && !this.props.error) {
       burger = (
         <Aux>
           <Burger ingredients={this.props.ings} />
@@ -69,8 +76,8 @@ class BurgerBuilder extends Component {
             ingredientAdded={this.props.onIngredientsAdded}
             ingredientRemoved={this.props.onIngredientsRemoved}
             totalPrice={this.props.price}
-            disabled={disabledInfo}
-            showOrderBtn={showOrderButton}
+            disabled={this.mapIngredients().disabledInfo}
+            showOrderBtn={this.mapIngredients().shouldDisableOrderBtn}
             ordered={this.purchaseHandler}
           />
         </Aux>
@@ -106,14 +113,15 @@ const mapStateToProps = state => {
     ings: state.burgerBuilder.ingredients,
     price: state.burgerBuilder.totalPrice,
     error: state.burgerBuilder.error,
-    isAuthenticated: state.auth.token !== null,
+    isAuthenticated: state.auth.token !== null
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onInitIngredients: () => dispatch(actions.initIngredients()),
     onIngredientsAdded: ingName => dispatch(actions.addIngredient(ingName)),
-    onIngredientsRemoved: ingName => dispatch(actions.removeIngredient(ingName)),
+    onIngredientsRemoved: ingName =>
+      dispatch(actions.removeIngredient(ingName)),
     onPurchaseInit: () => dispatch(actions.purchaseInit()),
     onSetAuthRedirectPath: path => dispatch(actions.setAuthRedirectPath(path))
   };
