@@ -21,7 +21,7 @@ const orderSummary = props => {
       <ul>{ingredientSummary}</ul>
       <p>
         <b>Total Cost: </b>
-        {props.totalPrice ? props.totalPrice.toFixed(2) : null }
+        ${props.totalPrice ? props.totalPrice.toFixed(2) : null }
       </p>
       <div className={classes.BtnGroup}>
         <Button label="Cancel" type="Danger" clicked={props.cancel} />
