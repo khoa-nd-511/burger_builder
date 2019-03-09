@@ -14,11 +14,11 @@ const buildControls = props => (
   <div className={classes.BuildControls}>
     <div className={classes.OrderAndPrice}>
       <div className={classes.PriceBar}>
-        Total Price: ${props.totalPrice.toFixed(2)}
+        Total Price: {props.totalPrice ? props.totalPrice.toFixed(2) : null }
       </div>
       <button
         className={classes.OrderButton}
-        disabled={!props.showOrderBtn}
+        disabled={props.showOrderBtn}
         onClick={props.ordered}
       >
         Order Now
