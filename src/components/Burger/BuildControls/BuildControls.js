@@ -14,7 +14,7 @@ const buildControls = props => (
   <div className={classes.BuildControls}>
     <div className={classes.OrderAndPrice}>
       <div className={classes.PriceBar}>
-        Total Price: {props.totalPrice ? props.totalPrice.toFixed(2) : null }
+        Total Price: ${props.totalPrice ? props.totalPrice.toFixed(2) : null }
       </div>
       <button
         className={classes.OrderButton}
